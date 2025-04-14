@@ -1,5 +1,9 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+apply plugin: "maven-publish"
+apply plugin: "java"
+
+
 
 android {
     namespace "com.fashionworldapp"
@@ -46,4 +50,15 @@ dependencies {
     // implementation("com.facebook.react:hermes-android:0.78.2")
 
     // Add other dependencies as needed
+}
+
+publishing {
+    publications {
+        myLibrary(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
 }
